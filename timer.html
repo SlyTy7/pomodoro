@@ -17,8 +17,8 @@
 		<title>index</title>
 
 		<!-- SHORTCUT ICON -->
-		<link rel="shortcut icon" href="img/favicon.ico">
-
+<!-- 		<link rel="shortcut icon" href="img/favicon.ico">
+ -->
 		<!-- BOOTSTRAP CDN LINK -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
@@ -39,7 +39,7 @@
 
 			<!-- LOGO -->
 		  <a class="navbar-brand navbar-logo" href="index.html">
-		  	<i class="fab fa-algolia fa-3x"></i>
+		  	<i class="fab fa-algolia fa-2x"></i>
 		  </a>
 		  <!-- /LOGO -->
 
@@ -62,7 +62,7 @@
 			<div class="row flex-sm-row-reverse">
 
 				<!-- CONTROLS -->
-				<div class="col-12 col-md-3 order-last p-3">
+				<div class="col-12 col-md-4 order-last p-3">
 					<div class="row text-center h-100 align-items-center">
 						<!-- BREAK AMOUNT -->
 						<div class="col-6 col-md-12">
@@ -72,13 +72,13 @@
 							<div class="input-group">
 
 								<div class="input-group-prepend">
-									<button class="btn btn-dark">-</button>
+									<button class="btn btn-dark" onclick="decrease('break')">-</button>
 								</div>
 								
-								<input type="text" name="break-amount" class="form-control text-center">
+								<input type="text" name="break-amount" class="form-control text-center" value="5"  id="input-break-amount">
 
 								<div class="input-group-append">
-									<button class="btn btn-dark">+</button>
+									<button class="btn btn-dark"  onclick="increase('break')">+</button>
 								</div>
 								
 							</div>
@@ -96,13 +96,13 @@
 							<div class="input-group">
 
 								<div class="input-group-prepend">
-									<button class="btn btn-dark" onclick="decrease()">-</button>
+									<button class="btn btn-dark" onclick="decrease('session')">-</button>
 								</div>
 								
-								<input type="text" name="session-amount" class="form-control text-center">
+								<input type="text" name="session-amount" class="form-control text-center" value="25" id="input-session-amount">
 
 								<div class="input-group-append">
-									<button class="btn btn-dark" onclick="increase()">+</button>
+									<button class="btn btn-dark" onclick="increase('session')">+</button>
 								</div>
 								
 							</div>
@@ -115,8 +115,23 @@
 				<!-- /CONTROLS -->
 
 				<!-- TIMER -->
-				<div class="col-12 col-md-9 text-center p-3">
-					<img src="http://via.placeholder.com/400x400">
+				<div class="col-12 col-md-8 text-center p-3">
+					<div class="timer-container rounded-circle bg-dark p-1 m-auto">
+						<div class="rounded-circle bg-dark h-100 w-100 timer-inner">
+
+							<!-- TIMER TEXT -->
+							<div class="row flex-column h-100 justify-content-center">
+									<h3 class="text-white" id="timer-title">Session Length</h3>		
+									<h3 class="text-white" id="timer-amount">
+										<span id="minutes">00</span>
+										:
+										<span id="seconds">00</span>
+									</h3>						
+							</div>
+							<!-- /TIMER TEXT -->
+
+						</div>
+					</div>	
 				</div>
 				<!-- /TIMER -->
 

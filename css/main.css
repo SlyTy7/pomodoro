@@ -1,3 +1,17 @@
+
+
+/*NAVBAR*/
 .navbar .navbar-logo:hover {
   color: #17a2b8;
+}
+
+
+/*TIMER*/
+.timer-container {
+  height: 300px;
+  width: 300px;
+}
+
+.timer-container div.timer-inner {
+  border: 3px solid #fff!important; 
 }
