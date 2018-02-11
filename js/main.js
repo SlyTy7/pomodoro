@@ -2,16 +2,16 @@ $( document ).ready(function() {
     timer.set();
 });
 
-let isPaused = false;
-
 let timer = {
   isRunning: false,
   interval: null,
   set: function(){
     const inputAmount = $('#input-session-amount')
     const timerMins = $('#minutes');
+    const timerSecs = $('#seconds');
 
     timerMins.text(inputAmount.val());
+    timerSecs.text('00');
   },
   start: function(){
     let mins = $('#minutes');
@@ -24,7 +24,7 @@ let timer = {
     
     timer.interval = setInterval(function(){
       if(total == 0){
-        clearInterval(interval);
+        clearInterval(timer.interval);
       } else {
         total -= 1;
         mins.text(Math.floor(total/60));
@@ -42,66 +42,6 @@ let timer = {
     clearInterval(timer.interval);
   }
 }
-
-/*
-function setTimer(){
-  const inputAmount = $('#input-session-amount')
-  const timerMins = $('#minutes');
-
-  timerMins.text(inputAmount.val());
-}
-
-function timer(){
-  let mins = $('#minutes');
-  let secs = $('#seconds');
-  let minsVal = parseInt(mins.text());
-  let secsVal = parseInt(secs.text());
-  let total = (minsVal * 60) + secsVal;
-
-  total -= 1;
-  mins.text(Math.floor(total/60));
-  if(total%60 < 10){
-    secs.text("0" + total%60);
-  }else{
-    secs.text(total%60);
-  }
-}
-
-function startTimer(){
-  /*
-  let mins = $('#minutes');
-  let secs = $('#seconds');
-  let minsVal = parseInt(mins.text());
-  let secsVal = parseInt(secs.text());
-  let total = (minsVal * 60) + secsVal;
-
-  setInterval(timer, 1000);
-
-  let countdown = setInterval(function(){
-    console.log(total);
-    if(total == 0 || isPaused){
-      isPaused = false;
-      clearInterval(countdown);
-
-    } else {
-      total -= 1;
-      mins.text(Math.floor(total/60));
-      if(total%60 < 10){
-        secs.text("0" + total%60);
-      }else{
-        secs.text(total%60);
-      }
-    }
-  }, 1000);
-
-}*/
-
-/*
-function pauseTimer(){
-  console.log('pause pressed');
-  clearInterval(timer, 1000);
-}
-*/
 
 function increase(type){
   //check to see if timer is running first
