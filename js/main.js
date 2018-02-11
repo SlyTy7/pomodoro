@@ -3,15 +3,22 @@ $( document ).ready(function() {
 });
 
 let timer = {
+  breakTime: false,
   isRunning: false,
   interval: null,
   set: function(){
-    const inputAmount = $('#input-session-amount')
+    const inputSessionAmount = $('#input-session-amount')
+    const inputBreakAmount = $('#input-break-amount')
     const timerMins = $('#minutes');
     const timerSecs = $('#seconds');
 
-    timerMins.text(inputAmount.val());
-    timerSecs.text('00');
+    if(timer.breakTime){
+      timerMins.text(inputBreakAmount.val());
+      timerSecs.text('00')
+    } else {
+      timerMins.text(inputSessionAmount.val());
+      timerSecs.text('00');
+    }
   },
   start: function(){
     let mins = $('#minutes');
@@ -25,6 +32,9 @@ let timer = {
     timer.interval = setInterval(function(){
       if(total == 0){
         clearInterval(timer.interval);
+        timer.breakTime = !(timer.breakTime);
+        timer.set();
+        timer.start();
       } else {
         total -= 1;
         mins.text(Math.floor(total/60));
