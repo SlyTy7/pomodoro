@@ -31,9 +31,13 @@ let timer = {
     
     timer.interval = setInterval(function(){
       if(total == 0){
+        //stop current timer
         clearInterval(timer.interval);
+        //switch breakTime value
         timer.breakTime = !(timer.breakTime);
+        //Reset timer with break/session amount
         timer.set();
+        //re start timer
         timer.start();
       } else {
         total -= 1;
