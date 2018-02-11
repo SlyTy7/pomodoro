@@ -6,19 +6,22 @@ let timer = {
   breakTime: false,
   isRunning: false,
   interval: null,
+  title: function(){
+    if(timer.breakTime){
+      $('#timer-title').text('Break Length');
+    }else{
+      $('#timer-title').text('Session Length');
+    }
+  },
   set: function(){
     const inputSessionAmount = $('#input-session-amount')
     const inputBreakAmount = $('#input-break-amount')
     const timerMins = $('#minutes');
     const timerSecs = $('#seconds');
 
-    if(timer.breakTime){
-      timerMins.text(inputBreakAmount.val());
-      timerSecs.text('00')
-    } else {
-      timerMins.text(inputSessionAmount.val());
-      timerSecs.text('00');
-    }
+    timer.breakTime ? timerMins.text(inputBreakAmount.val()) : timerMins.text(inputSessionAmount.val());
+
+    timerSecs.text('00');
   },
   start: function(){
     let mins = $('#minutes');
@@ -35,18 +38,18 @@ let timer = {
         clearInterval(timer.interval);
         //switch breakTime value
         timer.breakTime = !(timer.breakTime);
+        //switch timer title
+        timer.title();
         //Reset timer with break/session amount
         timer.set();
         //re start timer
         timer.start();
       } else {
         total -= 1;
+        //update minute output on timer
         mins.text(Math.floor(total/60));
-        if(total%60 < 10){
-          secs.text("0" + total%60);
-        }else{
-          secs.text(total%60);
-        }
+        //add extra zero to secs if less than 10
+        (total%60 < 10) ? secs.text("0" + total%60) : secs.text(total%60);
       }
     }, 1000);
   },
