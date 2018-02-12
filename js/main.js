@@ -13,6 +13,13 @@ let timer = {
       $('#timer-title').text('Session Length');
     }
   },
+  style: function() {
+    if(!timer.isRunning){
+      $('#timer-inner').removeClass('bg-success').removeClass('bg-danger').addClass('bg-dark');
+    } else {
+      timer.breakTime ? $('#timer-inner').removeClass('bg-dark').addClass('bg-danger').removeClass('bg-success') : $('#timer-inner').removeClass('bg-dark').addClass('bg-success').removeClass('bg-danger');
+    }
+  },
   set: function(){
     const inputSessionAmount = $('#input-session-amount')
     const inputBreakAmount = $('#input-break-amount')
@@ -31,6 +38,9 @@ let timer = {
     let total = (minsVal * 60) + secsVal;
 
     timer.isRunning = true;
+
+    //style timer
+    timer.style();
     
     timer.interval = setInterval(function(){
       if(total == 0){
@@ -40,6 +50,8 @@ let timer = {
         timer.breakTime = !(timer.breakTime);
         //switch timer title
         timer.title();
+        //style timer
+        timer.style();
         //Reset timer with break/session amount
         timer.set();
         //re start timer
@@ -57,6 +69,19 @@ let timer = {
     timer.isRunning = false;
 
     clearInterval(timer.interval);
+  },
+  reset: function(){
+    timer.isRunning = false;
+    timer.breakTime = false;
+    clearInterval(timer.interval);
+    timer.interval = null;
+    timer.title();
+
+    $('#input-session-amount').val(25);
+    $('#input-break-amount').val(5);
+    timer.set();
+    timer.style();
+    //$('#timer-inner').removeClass('bg-success').removeClass('bg-danger').addCLass('bg-dark');
   }
 }
 
