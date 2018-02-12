@@ -119,7 +119,7 @@
 
 							<!-- TIMER TEXT -->
 							<div class="row flex-column h-100 justify-content-center">
-									<h3 class="text-white" id="timer-title">Session Length</h3>		
+									<h3 class="text-white" id="timer-title">Work Session</h3>
 									<h3 class="text-white" id="timer-amount">
 										<span id="minutes">00</span>
 										:
@@ -128,9 +128,13 @@
 							</div>
 							<!-- /TIMER TEXT -->
 
-							<div class="row">
-								<button class="btn btn-success" onclick="timer.start()">Start</button>	
-								<button class="btn btn-danger" onclick="timer.pause()">Pause</button>	
+							<div class="row mx-auto my-3">
+								<div class="col-12">
+									<button class="btn btn-success" onclick="timer.start()">Start</button>	
+									<button class="btn btn-danger" onclick="timer.pause()">Pause</button>
+									<button class="btn btn-dark" onclick="timer.reset()">Reset</button>	
+								</div>
+								
 							</div>
 
 						</div>
