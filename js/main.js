@@ -8,9 +8,9 @@ let timer = {
   interval: null,
   title: function(){
     if(timer.breakTime){
-      $('#timer-title').text('Break Length');
+      $('#timer-title').text('Break');
     }else{
-      $('#timer-title').text('Session Length');
+      $('#timer-title').text('Work Session');
     }
   },
   style: function() {
