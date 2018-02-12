@@ -15,7 +15,7 @@ let timer = {
   },
   style: function() {
     if(!timer.isRunning){
-      $('#timer-inner').removeClass('bg-success').removeClass('bg-danger').addClass('bg-dark');
+      $('#timer-inner').removeClass('bg-success').removeClass('bg-danger').addClaass('bg-dark');
     } else {
       timer.breakTime ? $('#timer-inner').removeClass('bg-dark').addClass('bg-danger').removeClass('bg-success') : $('#timer-inner').removeClass('bg-dark').addClass('bg-success').removeClass('bg-danger');
     }
@@ -71,17 +71,16 @@ let timer = {
     clearInterval(timer.interval);
   },
   reset: function(){
+    //resets all values and amounts to defaults
     timer.isRunning = false;
     timer.breakTime = false;
     clearInterval(timer.interval);
     timer.interval = null;
     timer.title();
-
     $('#input-session-amount').val(25);
     $('#input-break-amount').val(5);
     timer.set();
     timer.style();
-    //$('#timer-inner').removeClass('bg-success').removeClass('bg-danger').addCLass('bg-dark');
   }
 }
 
