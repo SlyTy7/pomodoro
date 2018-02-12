@@ -28,25 +28,64 @@
 
 		<!-- FONT AWESOME LINK -->
 		<script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+
+		<style type="text/css">
+			html {
+				height: 100vh;
+			}
+
+			.bg-img {
+				/* The image used */
+		    background-image: url("img/bg.jpg");
+
+		    /* Half height */
+		    height: 100%; 
+
+		    /* Center and scale the image nicely */
+		    background-position: center;
+		    background-repeat: no-repeat;
+		    background-size: cover;
+			}
+
+			.landing-header {
+				font-family: 'Times New Roman';
+				font-weight: 600;
+			}
+
+			.landing-sub-header {
+				font-family: 'Times New Roman';
+				font-weight: 400;
+				font-style: italic;
+				font-size: 18px;
+			}
+
+		</style>
 	</head>
 
-	<body class="bg-light">
-		<div class="container">
-			<div class="jumbotron mt-5">
-				<h1>Welcome!</h1>
-				<div class="row">
-					<div class="mr-3">
-						<a class="btn btn-info" href="about.html">About</a>
+	<body class="bg-light h-100">
+		<div class="container-fluid bg-img">
+			<div class="row h-100">
+
+					<div class="offset-2 col-8 text-white text-left align-self-center">
+						<h1 class="display-1 text-uppercase landing-header"><strong><span class="text-danger">Tomato</span> Time</strong></h1>
+						
+						<p class="landing-sub-header ml-4">Use the pomodoro technique to boost your productivity!</p>
+						
+						<div class="text-right">
+							<div class="mr-3 d-inline">
+								<a class="btn btn-light btn-lg px-3 py-1" href="about.html">What Is It?</a>
+							</div>
+
+							<div class="mr-3 d-inline">
+								<a class="btn btn-danger btn-lg px-3 py-1" href="timer.html">Use It</a>
+							</div>
+						</div>
+						
+
 					</div>
 
-					<div class="mr-3">
-						<a class="btn btn-success" href="timer.html">Timer</a>
-					</div>
-
-				</div>
+				
 			</div>
-
-
 		</div>
 
 
